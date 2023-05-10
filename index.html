@@ -22,8 +22,8 @@
                 <ul>
                     <li :class="changeClass(i)" v-for="(elemento,i) in listaSpesa">
                         {{elemento.prodotto}} 
-                        {{(elemento.comprato ==) ? "da comprare" : ""}} 
-                        <button @click="showProduct(i)">Comprato</button>
+                        {{(elemento.comprato == false) ? "" : "gia comprate"}} 
+                        <button @click="showProduct(i)">{{(elemento.comprato == false) ? "da comprare" : "annulla"}}</button>
                         <button @click="changeStyle(i)">Rimuovi</button>
                     </li>
                 </ul>
