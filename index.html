@@ -14,13 +14,18 @@
         <div id="app">
 
             <div class="boxInput">
-                <input type="text" placeholder="aggiungi alla lista" v-model="newElement.prodotto">
+                <input type="text" placeholder="aggiungi alla lista" @keyUp.enter="pushElement()" v-model="newElement.prodotto">
                 <button @click="pushElement()">Aggiungi</button>
             </div>
 
             <div class="boxList">
                 <ul>
-                    <li v-for="elemento in listaSpesa">{{elemento.prodotto}}</li>
+                    <li :class="changeClass(i)" v-for="(elemento,i) in listaSpesa">
+                        {{elemento.prodotto}} 
+                        {{(elemento.comprato ==) ? "da comprare" : ""}} 
+                        <button @click="showProduct(i)">Comprato</button>
+                        <button @click="changeStyle(i)">Rimuovi</button>
+                    </li>
                 </ul>
             </div>
         </div>
