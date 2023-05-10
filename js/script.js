@@ -3,23 +3,37 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            newElement: "",
+            newElement: {
+                prodotto: "",
+                comprato: false,
+            },
             listaSpesa: [
                 {
-                    prodotto: "banane", comprato : "done"
+                    prodotto: "banane",
+                    comprato : false
                 },
                 {
-                    prodotto: "mele", comprato : "done"
+                    prodotto: "mele", 
+                    comprato : false
                 },
                 {
-                    prodotto: "pere", comprato : "done"
+                    prodotto: "pere", 
+                    comprato : false
                 },
             ]
                 }
     },
     methods: {
         pushElement() {
-            this.listaSpesa.push(this.newElement)
+            
+            this.listaSpesa.unshift({
+
+                prodotto: this.newElement.prodotto,
+                comprato: false
+
+            });
+
+            this.newElement.prodotto = "";
         }
     }
 }).mount('#app')
